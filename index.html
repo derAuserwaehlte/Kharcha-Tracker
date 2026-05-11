@@ -7,6 +7,41 @@
 </head>
 <body>
   <h1>Mero Kharcha</h1>
-  <p>Day 1 - I started</p>
+  <div class="form">
+    <input type="text" id="expenseName" placeholder="K kharcha? (eg. Date, petrol)"/>
+    <input type="number" id="expenseAmount" placeholder="Kati ko fatkyo?">
+    <select id="expenseCategory">
+      <option value="khana">Khana</option>
+      <option value="yatayat">Yatayat</option>
+      <option value="bijuli">Bijuli</option>
+      <option value="manoranjan">Manoranjan</option>
+      <option value="anya">Anya</option>
+    </select>
+    <button id="addBtn">Add Kharcha</button>
+
+  </div>
+  <ul id="expenseList"></ul>
+  <h3 id="total">Jamma Kharcha: NPR 0</h3>
+  <script>
+  let totalAmount = 0;
+
+  document.getElementById("addBtn").onclick = function() {
+    let name = document.getElementById("expenseName").value;
+    let amount = document.getElementById("expenseAmount").value;
+    let category = document.getElementById("expenseCategory").value;
+
+    if(name == "" || amount == "") {
+      alert("Sabai field bharnus!")
+      return;
+    }
+
+    let li = document.createElement("li");
+    li.textContent = category + " - " + name + ": NPR " + amount;
+    document.getElementById("expenseList").appendChild(li);
+
+    totalAmount = totalAmount + Number(amount);
+    document.getElementById("total").textContent = "Jamma Kharcha: NPR " + totalAmount;
+  }
+</script>
 </body>
 </html>
