@@ -57,6 +57,12 @@
       text-align:center;
       color:#e74c3c;
     }
+    .deleteBtn{
+      background-color: #e74c3c;
+      padding: 2px 8px;
+      font-size:12px;
+      margin-left: 20px;
+    }
   </style>
 </head>
 <body>
@@ -92,6 +98,16 @@
     let li = document.createElement("li");
     li.textContent = category + " - " + name + ": NPR " + amount;
     document.getElementById("expenseList").appendChild(li);
+
+    let deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "X";
+    deleteBtn.classList.add("deleteBtn");
+    deleteBtn.onclick=function(){
+      li.remove();
+      totalAmount= totalAmount- Number(amount);
+      document.getElementById("total").textContent = "Jamma Kharcha: NPR" + totalAmount;
+    }
+    li.appendChild(deleteBtn);
 
     totalAmount = totalAmount + Number(amount);
     document.getElementById("total").textContent = "Jamma Kharcha: NPR " + totalAmount;
